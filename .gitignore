@@ -2,6 +2,6 @@
 
 #mac特有的临时文件
 *.DS_Store
-.idea
+*.idea
 *.swap
 *.swp
