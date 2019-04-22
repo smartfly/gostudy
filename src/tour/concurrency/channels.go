@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /**
  * @author taohu
@@ -27,13 +29,5 @@ func main() {
 	x, y := <-c, <-c // 从c中接收
 
 	fmt.Println(x, y, x+y)
-
-	messages := make(chan string)
-	go func() { messages <- "ping" }()
-	go func() { messages <- "test" }()
-	msg := <-messages
-	fmt.Println(msg)
-	msg1 := <-messages
-	fmt.Println(msg1)
 
 }
