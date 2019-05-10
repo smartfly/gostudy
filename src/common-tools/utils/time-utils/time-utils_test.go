@@ -25,3 +25,7 @@ func TestStr2Timestamp(t *testing.T) {
 	result, _ := Str2Timestamp("2019-05-10 10:26:36")
 	fmt.Printf(" time string to timestamp: %d\n", result)
 }
+
+func TestTimeZero(t *testing.T) {
+	fmt.Printf("time zero value: %s\n", time.Time{})
+}
