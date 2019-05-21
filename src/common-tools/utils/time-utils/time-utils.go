@@ -1,3 +1,6 @@
+/*
+time transfer tool, include time to string, string to time, timestamp to string and string to timestamp
+*/
 package time_utils
 
 import "time"
