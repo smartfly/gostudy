@@ -26,3 +26,13 @@ func TestBubbleEnhance(t *testing.T) {
 	Sort(s)
 	fmt.Println(s)
 }
+
+func TestShow(t *testing.T) {
+	person := Person{
+		Name: "路飞",
+		age:  10,
+	}
+	fmt.Println(person)
+	Show(&person)
+	fmt.Println(person)
+}
