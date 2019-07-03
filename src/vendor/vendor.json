@@ -71,6 +71,12 @@
 			"revisionTime": "2018-07-18T01:23:57Z"
 		},
 		{
+			"checksumSHA1": "W8mzTLRjnooGtHwWaxSX8eq8hlY=",
+			"path": "github.com/patrickmn/go-cache",
+			"revision": "5633e0862627c011927fa39556acae8b1f1df58a",
+			"revisionTime": "2018-08-15T05:31:27Z"
+		},
+		{
 			"checksumSHA1": "D4SSpro8BDG9lC2NLDz7Km7am0s=",
 			"path": "github.com/ugorji/go/codec",
 			"revision": "1d7ab5c50b36701116070c4c612259f93c262367",
@@ -94,6 +100,5 @@
 			"revision": "51d6538a90f86fe93ac480b35f37b2be17fef232",
 			"revisionTime": "2018-11-15T11:05:04Z"
 		}
-	],
-	"rootPath": "/home/smartfly/taohu/go-study/src"
+	]
 }
