@@ -29,3 +29,19 @@ func TestStr2Timestamp(t *testing.T) {
 func TestTimeZero(t *testing.T) {
 	fmt.Printf("time zero value: %s\n", time.Time{})
 }
+
+func TestGetFirstDayOfLastWeek(t *testing.T) {
+	fmt.Println(GetFirstDayOfLastWeek())
+}
+
+func TestGetLastDayOfLastWeek(t *testing.T) {
+	fmt.Println(GetLastDayOfLastWeek())
+}
+
+func TestGetFirstDayOfLastMonth(t *testing.T) {
+	fmt.Println(GetFirstDayOfLastMonth())
+}
+
+func TestGetLastDayOfLastMonth(t *testing.T) {
+	fmt.Println(GetLastDayOfLastMonth())
+}

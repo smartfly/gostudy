@@ -51,6 +51,12 @@
 			"revisionTime": "2019-04-09T05:09:43Z"
 		},
 		{
+			"checksumSHA1": "QgaQUPcXrkCMDQAyM2awEiAIItQ=",
+			"path": "github.com/jinzhu/now",
+			"revision": "1a6fdd4591d336a897120c50c69ed3c0e8033468",
+			"revisionTime": "2019-06-13T05:14:06Z"
+		},
+		{
 			"checksumSHA1": "TB2vxux9xQbvsTHOVt4aRTuvSn4=",
 			"path": "github.com/json-iterator/go",
 			"revision": "0ff49de124c6f76f8494e194af75bde0f1a49a29",

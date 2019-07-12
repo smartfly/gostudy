@@ -3,7 +3,10 @@ time transfer tool, include time to string, string to time, timestamp to string 
 */
 package time_utils
 
-import "time"
+import (
+	"github.com/jinzhu/now"
+	"time"
+)
 
 const timeLayout = "2006-01-02 15:04:05"
 
@@ -39,4 +42,34 @@ func Str2Timestamp(timeStr string) (int64, error) {
 	}
 	timestamp := theTime.Unix()
 	return timestamp, nil
+}
+
+// 获取上周周一起始时间
+func GetFirstDayOfLastWeek() time.Time {
+	time := now.Monday()
+	time = time.AddDate(0, 0, -7)
+	return time
+}
+
+// 获取上周周日结束时间
+func GetLastDayOfLastWeek() time.Time {
+	time := now.EndOfSunday()
+	time = time.AddDate(0, 0, -7)
+	return time
+}
+
+// 获取上月第一天起始时间
+func GetFirstDayOfLastMonth() time.Time {
+	time := now.BeginningOfMonth()
+	time = time.AddDate(0, -1, 0)
+	return time
+}
+
+// 获取上月最后一天结束时间
+func GetLastDayOfLastMonth() time.Time {
+	time := now.BeginningOfMonth()
+	time = time.AddDate(0, -1, 0)
+	time = now.New(time).EndOfMonth()
+
+	return time
 }
