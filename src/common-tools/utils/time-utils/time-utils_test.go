@@ -2,6 +2,7 @@ package time_utils
 
 import (
 	"fmt"
+	"github.com/jinzhu/now"
 	"testing"
 	"time"
 )
@@ -44,4 +45,20 @@ func TestGetFirstDayOfLastMonth(t *testing.T) {
 
 func TestGetLastDayOfLastMonth(t *testing.T) {
 	fmt.Println(GetLastDayOfLastMonth())
+}
+
+func TestEndOfWeek(t *testing.T) {
+	now.WeekStartDay = time.Monday // set Monday as first day, default is Sunday
+	fmt.Println(now.BeginningOfWeek())
+	fmt.Println(now.EndOfWeek())
+}
+
+func TestCalculatingBasedOnAnotherTime(t *testing.T) {
+	t1 := time.Date(2019, 7, 1, 17, 13, 49, 123456789, time.Now().Location())
+	fmt.Println(now.New(t1).EndOfMonth())
+}
+
+func TestTimeFormats(t *testing.T) {
+	now.TimeFormats = append(now.TimeFormats, "02 Jan 2006 15:04")
+	fmt.Println(now.TimeFormats[len(now.TimeFormats)-1])
 }

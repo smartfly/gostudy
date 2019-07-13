@@ -12,3 +12,8 @@
 ```
 The zero value of type Time is January 1, year 1, 00:00:00.000000000 UTC.
 ```
+
+# github
+- Now is a time toolKit for golang
+
+    [jinzhu/now](https://github.com/jinzhu/now)
