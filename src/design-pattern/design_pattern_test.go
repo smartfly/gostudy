@@ -1,6 +1,9 @@
 package design_pattern
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 /*
  * @author taohu
@@ -11,4 +14,11 @@ import "testing"
 
 func TestUser_String(t *testing.T) {
 	saveUser(&user{"smartfly"})
+}
+
+func TestNewOperateFactory(t *testing.T) {
+	operator := NewOperateFactory().CreateOperate("+")
+	fmt.Printf("add result is %d\n", operator.Operate(1, 2))
+	operator = NewOperateFactory().CreateOperate("*")
+	fmt.Printf("multi result is %d\n", operator.Operate(2, 4))
 }
