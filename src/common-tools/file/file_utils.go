@@ -47,6 +47,7 @@ func ReadFile(filePath string) ([]Lines, error) {
 		}
 		iterator++
 		value := strings.TrimSpace(line)
+		// 将文件切割成每2000行一份
 		if iterator <= batchSize {
 			lines.values = append(lines.values, value)
 		} else {
