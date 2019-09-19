@@ -61,3 +61,42 @@ func TestReserve(t *testing.T) {
 		fmt.Println(time.Now().Format("2016-01-02 15:04:05.000"))
 	}
 }
+
+func TestChannelImplementRateLimit(t *testing.T) {
+	requests := make(chan int, 5)
+	for i := 1; i <= 5; i++ {
+		requests <- i
+	}
+	close(requests)
+
+	limiter := time.Tick(200 * time.Millisecond)
+
+	for req := range requests {
+		<-limiter
+		fmt.Println("request", req, time.Now().UnixNano())
+	}
+
+	fmt.Println("---------------------")
+
+	burstyLimiter := make(chan time.Time, 3)
+
+	for i := 0; i < 3; i++ {
+		burstyLimiter <- time.Now()
+	}
+
+	go func() {
+		for t := range time.Tick(200 * time.Millisecond) {
+			burstyLimiter <- t
+		}
+	}()
+
+	burstyRequests := make(chan int, 5)
+	for i := 1; i <= 5; i++ {
+		burstyRequests <- i
+	}
+	close(burstyRequests)
+	for req := range burstyRequests {
+		<-burstyLimiter
+		fmt.Println("request", req, time.Now().UnixNano())
+	}
+}
