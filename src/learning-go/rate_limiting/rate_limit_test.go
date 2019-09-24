@@ -56,9 +56,11 @@ func TestLimiter(t *testing.T) {
 func TestReserve(t *testing.T) {
 	l := rate.NewLimiter(1, 3)
 	for {
-		r := l.ReserveN(time.Now(), 3)
-		fmt.Println(r.Delay())
-		fmt.Println(time.Now().Format("2016-01-02 15:04:05.000"))
+		now := time.Now()
+		r := l.ReserveN(now, 3)
+		delay := r.DelayFrom(now)
+		fmt.Println(delay)
+		time.Sleep(delay)
 	}
 }
 
@@ -76,7 +78,7 @@ func TestChannelImplementRateLimit(t *testing.T) {
 		fmt.Println("request", req, time.Now().UnixNano())
 	}
 
-	fmt.Println("---------------------")
+	fmt.Println("-----------------------------")
 
 	burstyLimiter := make(chan time.Time, 3)
 
@@ -99,4 +101,19 @@ func TestChannelImplementRateLimit(t *testing.T) {
 		<-burstyLimiter
 		fmt.Println("request", req, time.Now().UnixNano())
 	}
+}
+
+func TestReserveN(t *testing.T) {
+	// 1000个请求/秒即 1毫秒1个请求
+	M := 1000
+	n := rate.Every(1 * time.Millisecond)
+	r := rate.NewLimiter(n, M)
+	now := time.Now()
+	rv := r.ReserveN(now, M)
+	if !rv.OK() {
+		fmt.Println("Exceeds limiter's burst")
+	}
+	delay := rv.DelayFrom(now)
+	time.Sleep(delay)
+	fmt.Println(time.Now().UnixNano())
 }
