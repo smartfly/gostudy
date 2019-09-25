@@ -123,7 +123,6 @@ func act(r *rate.Limiter) {
 		go Computer(i, n)
 		n++
 	}
-	fmt.Println(n)
 	now := time.Now()
 	rv := r.ReserveN(now, n)
 	if !rv.OK() {
@@ -135,10 +134,7 @@ func act(r *rate.Limiter) {
 
 }
 
-var cnt = 0
-
-func Computer(a, b int) {
-	c := a * b
-	fmt.Println(cnt, c)
-	cnt++
+func Computer(a, b int) (c int) {
+	c = a * b
+	return
 }
