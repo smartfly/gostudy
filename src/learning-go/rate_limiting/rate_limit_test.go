@@ -54,10 +54,10 @@ func TestLimiter(t *testing.T) {
 }
 
 func TestReserve(t *testing.T) {
-	l := rate.NewLimiter(1, 3)
+	l := rate.NewLimiter(1000, 1000)
 	for {
 		now := time.Now()
-		r := l.ReserveN(now, 3)
+		r := l.ReserveN(now, 1000)
 		delay := r.DelayFrom(now)
 		fmt.Println(delay)
 		time.Sleep(delay)
@@ -107,13 +107,38 @@ func TestReserveN(t *testing.T) {
 	// 1000个请求/秒即 1毫秒1个请求
 	M := 1000
 	n := rate.Every(1 * time.Millisecond)
+	fmt.Println(n)
 	r := rate.NewLimiter(n, M)
+	for {
+		act(r)
+	}
+}
+
+func act(r *rate.Limiter) {
+	limiter := time.Tick(time.Millisecond)
+	n := 0
+	for i := 0; i < 1000; i++ {
+		<-limiter
+		// TODO 处理请求
+		go Computer(i, n)
+		n++
+	}
+	fmt.Println(n)
 	now := time.Now()
-	rv := r.ReserveN(now, M)
+	rv := r.ReserveN(now, n)
 	if !rv.OK() {
 		fmt.Println("Exceeds limiter's burst")
 	}
 	delay := rv.DelayFrom(now)
+	fmt.Println(time.Now().Unix())
 	time.Sleep(delay)
-	fmt.Println(time.Now().UnixNano())
+
+}
+
+var cnt = 0
+
+func Computer(a, b int) {
+	c := a * b
+	fmt.Println(cnt, c)
+	cnt++
 }
