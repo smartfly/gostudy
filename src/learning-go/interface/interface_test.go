@@ -36,3 +36,26 @@ func TestShow(t *testing.T) {
 	Show(&person)
 	fmt.Println(person)
 }
+
+func TestInterfaceFunc(t *testing.T) {
+	var a Integer = 1
+	var b1 LessAdder = &a
+	fmt.Printf("%v\n", b1.Less(1))
+	var b2 LessAdder = a
+	fmt.Println(b2)
+}
+
+type Integer int
+
+type LessAdder interface {
+	Less(b Integer) bool
+	Add(b Integer)
+}
+
+func (a Integer) Less(b Integer) bool {
+	return a < b
+}
+
+func (a Integer) Add(b Integer) {
+	a += b
+}
