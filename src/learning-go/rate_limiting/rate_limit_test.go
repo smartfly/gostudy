@@ -65,6 +65,7 @@ func TestReserve(t *testing.T) {
 }
 
 func TestChannelImplementRateLimit(t *testing.T) {
+	// 5个同时并发
 	requests := make(chan int, 5)
 	for i := 1; i <= 5; i++ {
 		requests <- i
@@ -79,7 +80,7 @@ func TestChannelImplementRateLimit(t *testing.T) {
 	}
 
 	fmt.Println("-----------------------------")
-
+	// 前3个同时并发，后面200毫秒处理一个
 	burstyLimiter := make(chan time.Time, 3)
 
 	for i := 0; i < 3; i++ {
@@ -129,7 +130,7 @@ func act(r *rate.Limiter) {
 		fmt.Println("Exceeds limiter's burst")
 	}
 	delay := rv.DelayFrom(now)
-	fmt.Println(time.Now().Unix())
+	fmt.Println(time.Now().Unix(), delay)
 	time.Sleep(delay)
 
 }

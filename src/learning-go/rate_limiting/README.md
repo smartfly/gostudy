@@ -5,3 +5,5 @@
 [Rate Limiting](https://github.com/golang/go/wiki/RateLimiting)
 
 [Rate limit examples in Go](https://hustcat.github.io/rate-limit-example-in-go/)
+
+[How to Rate Limit HTTP Requests](https://www.alexedwards.net/blog/how-to-rate-limit-http-requests)
