@@ -47,6 +47,7 @@ func TestInterfaceFunc(t *testing.T) {
 
 type Integer int
 
+// test
 type LessAdder interface {
 	Less(b Integer) bool
 	Add(b Integer)
