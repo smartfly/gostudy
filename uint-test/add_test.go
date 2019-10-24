@@ -20,3 +20,17 @@ func TestAdd1(t *testing.T) {
 		t.Log("result is right")
 	}
 }
+
+//func TestAdd2(t *testing.T) {
+//	if Add(2, 3) != 6 {
+//		t.Fatal("result is wrong!")
+//	} else {
+//		t.Log("result is right")
+//	}
+//}
+
+func Benchmark(b *testing.B) {
+	for i := 0; i < b.N; i++ { // b.N 测试循环次数
+		Add(4, 5)
+	}
+}
