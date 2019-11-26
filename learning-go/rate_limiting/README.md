@@ -1,3 +1,14 @@
+# golang rate limit
+
+## [golang.org/x/time/rate](https://godoc.org/golang.org/x/time/rate)
+
+Limiter has three main methods, Allow, Reserve, and Wait. Most callers should use Wait
+
+Each of the three methods consumes a single token, They differ in their behavior when no tokens is available.
+
+- Allow: if no token is available, Allow returns false.
+- Reserve: if no token is available, Reserve returns a reservation for a future token and the amount of time the caller must wait before using it.
+- Wait: if no token is available, Wait blocks until one can be obtained  or its associated ```context.Context``` is canceled.
 
 # 参考资料
 

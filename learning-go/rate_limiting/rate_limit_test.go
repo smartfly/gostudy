@@ -29,16 +29,16 @@ func limit(next http.Handler) http.Handler {
 	})
 }
 
+func okHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("ok"))
+}
+
 func TestRateLimitByTenQPS(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", okHandler)
 
 	// warp the server mux with the limit middleware
 	http.ListenAndServe(":4000", limit(mux))
-}
-
-func okHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("ok"))
 }
 
 func TestLimiter(t *testing.T) {
@@ -64,6 +64,7 @@ func TestReserve(t *testing.T) {
 	}
 }
 
+// Example1: By tickers
 func TestChannelImplementRateLimit(t *testing.T) {
 	// 5个同时并发
 	requests := make(chan int, 5)
