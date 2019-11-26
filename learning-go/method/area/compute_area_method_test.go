@@ -48,4 +48,5 @@ func TestUintBoxList(t *testing.T) {
 	boxes.PaintItBlack()
 	assert.Equal(t, "BLACK", boxes[1].color.String())
 	assert.Equal(t, "BLACK", boxes.BiggestColor().String())
+	// 注释
 }
