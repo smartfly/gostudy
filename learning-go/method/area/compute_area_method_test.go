@@ -2,7 +2,8 @@ package area
 
 import (
 	"fmt"
-	"gopkg.in/go-playground/assert.v1"
+	"github.com/stretchr/testify/assert"
+	"sync/atomic"
 	"testing"
 )
 
@@ -48,5 +49,19 @@ func TestUintBoxList(t *testing.T) {
 	boxes.PaintItBlack()
 	assert.Equal(t, "BLACK", boxes[1].color.String())
 	assert.Equal(t, "BLACK", boxes.BiggestColor().String())
-	// 注释
+}
+
+func TestUintArea(t *testing.T) {
+	r1 := Rectangle{12, 2}
+	result1 := r1.area()
+	r2 := Circle{10}
+	result2 := r2.area()
+	assert.Equal(t, float64(24), result1)
+	assert.Equal(t, 314.1592653589793, result2)
+}
+
+func TestUnitAtom(t *testing.T) {
+	a := int32(20)
+	atomic.AddInt32(&a, 3)
+	assert.Equal(t, int32(24), a)
 }
