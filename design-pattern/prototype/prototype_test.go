@@ -38,7 +38,12 @@ func init() {
 	t1 := &Type1{
 		name: "type1",
 	}
+
+	t2 := &Type2{
+		name: "type2",
+	}
 	manager.Set("t1", t1)
+	manager.Set("t2", t2)
 }
 
 func TestClone(t *testing.T) {

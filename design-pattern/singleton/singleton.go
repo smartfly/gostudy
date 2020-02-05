@@ -12,6 +12,7 @@ import "sync"
 //Singleton 单例模式类
 type Singleton struct{}
 
+// 内部实现不对外暴露
 var singleton *Singleton
 var once sync.Once
 

@@ -19,18 +19,18 @@ type OperatorFactory interface {
 	Create() Operator
 }
 
-// OperatorBase 是Operator接口实现的基类，封装公用方法
-type OperatorBase struct {
+// operatorBase 是Operator接口实现的基类，封装公用方法
+type operatorBase struct {
 	a, b int
 }
 
 // SetA 设置A
-func (o *OperatorBase) SetA(a int) {
+func (o *operatorBase) SetA(a int) {
 	o.a = a
 }
 
 // SetB 设置B
-func (o *OperatorBase) SetB(b int) {
+func (o *operatorBase) SetB(b int) {
 	o.b = b
 }
 
@@ -39,13 +39,13 @@ type PlusOperatorFactory struct{}
 
 func (PlusOperatorFactory) Create() Operator {
 	return &PlusOperator{
-		OperatorBase: &OperatorBase{},
+		operatorBase: &operatorBase{},
 	}
 }
 
 //PlusOperator Operator 的实际加法实现
 type PlusOperator struct {
-	*OperatorBase
+	*operatorBase
 }
 
 //Result 获取结果
@@ -58,13 +58,13 @@ type MinusOperatorFactory struct{}
 
 func (MinusOperatorFactory) Create() Operator {
 	return &MinusOperator{
-		OperatorBase: &OperatorBase{},
+		operatorBase: &operatorBase{},
 	}
 }
 
 //MinusOperator Operator 的实际减法实现
 type MinusOperator struct {
-	*OperatorBase
+	*operatorBase
 }
 
 //Result 获取结果
