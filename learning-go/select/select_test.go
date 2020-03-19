@@ -13,7 +13,8 @@ import (
  * @desc select https://colobu.com/2017/07/07/select-vs-switch-in-golang/
 **/
 
-func TestSelect(t *testing.T) {
+// TestSelectByCase 正常执行
+func TestSelectByCase(t *testing.T) {
 	c1 := make(chan string)
 	c2 := make(chan string)
 
@@ -33,6 +34,38 @@ func TestSelect(t *testing.T) {
 			fmt.Println("received", msg1)
 		case msg2 := <-c2:
 			fmt.Println("received", msg2)
+		}
+	}
+}
+
+// TestSelectByDefault 不存在收发的channel, 执行default中的语句
+func TestSelectByDefault(t *testing.T) {
+
+	var c1 chan int
+	select {
+	case i := <-c1:
+		fmt.Println(i)
+	default:
+		fmt.Println("terminal")
+	}
+
+}
+
+// TestSelectByRandom 随机执行
+func TestSelectByRandom(t *testing.T) {
+	ch := make(chan int)
+	go func() {
+		for range time.Tick(1 * time.Second) {
+			ch <- 0
+		}
+	}()
+
+	for {
+		select {
+		case <-ch:
+			println("case1")
+		case <-ch:
+			println("case2")
 		}
 	}
 }
