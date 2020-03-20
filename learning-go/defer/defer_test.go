@@ -10,7 +10,7 @@ import (
  * @author taohu
  * @date 2020/3/20
  * @time 下午8:16
- * @desc please describe function
+ * @desc [defer](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-defer/)
 **/
 
 // 多个defer,其执行顺序如同栈，后进先出
