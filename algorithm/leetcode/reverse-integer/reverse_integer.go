@@ -22,7 +22,7 @@ func reverse(x int) int {
 	}
 	for init > 0 {
 		temp := init % 10
-		value = value*10 + temp
+		value = value*10 + temp // int32存在overflow问题
 		init = init / 10
 	}
 
