@@ -88,8 +88,7 @@ func TestModifyGlobalVariable(t *testing.T) {
 		x += 1
 		return x
 	}
-
-	fmt.Println("result: ", x, y())
+	fmt.Println("result: ", x, y()) // 先执行函数, 然后执行打印
 }
 
 //defer延迟调用
