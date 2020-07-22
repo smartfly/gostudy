@@ -10,6 +10,7 @@ require (
 	github.com/golang/mock v1.3.1
 	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/websocket v1.4.1
+	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d
 	github.com/jinzhu/now v1.0.1
 	github.com/juju/ratelimit v1.0.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
