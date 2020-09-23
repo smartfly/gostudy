@@ -14,6 +14,7 @@ require (
 	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d
 	github.com/jinzhu/now v1.0.1
 	github.com/juju/ratelimit v1.0.1
+	github.com/looplab/fsm v0.1.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/stretchr/testify v1.4.0
