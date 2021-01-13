@@ -2,6 +2,8 @@ package closure
 
 import (
 	"fmt"
+	"runtime"
+	"sync"
 	"testing"
 )
 
@@ -49,4 +51,76 @@ func Test_add(t *testing.T) {
 	fmt.Println(addFunc())
 	fmt.Println(addFunc())
 	fmt.Println(addFunc())
+}
+
+func GoAndWait(handlers ...func() error) (err error) {
+	var wg sync.WaitGroup
+	var once sync.Once
+	for _, f := range handlers {
+		wg.Add(1)
+		go func(handler func() error) {
+
+			defer func() {
+				if e := recover(); e != nil {
+					buf := make([]byte, 1024)
+					buf = buf[:runtime.Stack(buf, false)]
+					fmt.Errorf("[PANIC]%v\n%s\n", e, buf)
+				}
+				wg.Done()
+			}()
+
+			if e := handler(); e != nil {
+				once.Do(func() {
+					err = e
+				})
+			}
+		}(f)
+	}
+
+	wg.Wait()
+
+	return err
+}
+
+func TestGoroutineChannel(t *testing.T) {
+	pIDs := []string{"1", "2", "3"}
+	results := make(map[string]bool)
+	resultsChan := make(chan map[string]bool, len(pIDs))
+	var tasks []func() error
+	for _, pID := range pIDs {
+		tasks = append(tasks, func() error {
+			resultsChan <- map[string]bool{pID: true}
+			return nil
+		})
+	}
+	_ = GoAndWait(tasks...)
+	close(resultsChan)
+	for val := range resultsChan {
+		for k, v := range val {
+			results[k] = v
+		}
+	}
+	fmt.Println(results)
+}
+
+func TestGoroutineChannelClosure(t *testing.T) {
+	pIDs := []string{"1", "2", "3"}
+	results := make(map[string]bool)
+	resultsChan := make(chan map[string]bool, len(pIDs))
+	var tasks []func() error
+	for _, pID := range pIDs {
+		temp := pID //闭包
+		tasks = append(tasks, func() error {
+			resultsChan <- map[string]bool{temp: true}
+			return nil
+		})
+	}
+	_ = GoAndWait(tasks...)
+	close(resultsChan)
+	for val := range resultsChan {
+		for k, v := range val {
+			results[k] = v
+		}
+	}
+	fmt.Println(results)
 }

@@ -7,6 +7,7 @@ require (
 	github.com/agiledragon/gomonkey v0.0.0-20191108143044-03c0e84bd42b
 	github.com/alibaba/sentinel-golang v0.4.0
 	github.com/gin-gonic/gin v1.5.0
+	github.com/go-playground/validator/v10 v10.3.0
 	github.com/golang/mock v1.3.1
 	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/websocket v1.4.1
