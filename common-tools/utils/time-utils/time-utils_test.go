@@ -2,9 +2,10 @@ package time_utils
 
 import (
 	"fmt"
-	"github.com/jinzhu/now"
 	"testing"
 	"time"
+
+	"github.com/jinzhu/now"
 )
 
 func TestTime2Str(t *testing.T) {
@@ -61,4 +62,22 @@ func TestCalculatingBasedOnAnotherTime(t *testing.T) {
 func TestTimeFormats(t *testing.T) {
 	now.TimeFormats = append(now.TimeFormats, "02 Jan 2006 15:04")
 	fmt.Println(now.TimeFormats[len(now.TimeFormats)-1])
+}
+
+func TestTime2Str1(t *testing.T) {
+	type args struct {
+		time time.Time
+	}
+	var tests []struct {
+		name string
+		args args
+		want string
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Time2Str(tt.args.time); got != tt.want {
+				t.Errorf("Time2Str() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
