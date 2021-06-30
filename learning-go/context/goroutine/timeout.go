@@ -18,7 +18,7 @@ func main() {
 
 func demo() {
 	ctx, cancel := context.WithTimeout(context.Background(), 9*time.Second)
-	go watch(ctx, "[线程1]", 10)
+	go watch(ctx, "[线程1]", 5)
 	go watch(ctx, "[线程2]", 2)
 	//go watch(ctx, "[线程3]", 3)
 
