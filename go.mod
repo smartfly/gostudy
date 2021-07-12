@@ -21,6 +21,7 @@ require (
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/stretchr/testify v1.4.0
 	go.uber.org/ratelimit v0.1.0
+	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/time v0.0.0-20190921001708-c4c64cad1fd0
 	golang.org/x/tools v0.0.0-20200811215021-48a8ffc5b207 // indirect
 	golang.org/x/tour v0.0.0-20191002171047-6bb846ce41cd

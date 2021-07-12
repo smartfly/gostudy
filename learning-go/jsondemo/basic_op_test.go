@@ -1,6 +1,8 @@
 package jsondemo
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestUnmarshal(t *testing.T) {
 	Unmarshal()
