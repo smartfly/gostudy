@@ -4,3 +4,5 @@ golang errgroup 解决的问题：
 [golang errgroup](https://zhuanlan.zhihu.com/p/64983626)
 
 [errgroup](https://pkg.go.dev/golang.org/x/sync/errgroup)
+
+测试
