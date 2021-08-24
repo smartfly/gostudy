@@ -6,6 +6,7 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/agiledragon/gomonkey v0.0.0-20191108143044-03c0e84bd42b
 	github.com/alibaba/sentinel-golang v0.4.0
+	github.com/fatih/structs v1.1.0
 	github.com/fatih/structtag v1.2.0
 	github.com/gin-gonic/gin v1.5.0
 	github.com/go-playground/validator/v10 v10.3.0
