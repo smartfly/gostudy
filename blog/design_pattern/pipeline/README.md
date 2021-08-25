@@ -1,0 +1,1 @@
+[GO编程模式：PIPELINE](https://coolshell.cn/articles/21228.html)
