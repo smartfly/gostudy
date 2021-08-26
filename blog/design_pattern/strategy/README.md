@@ -1,0 +1,1 @@
+[Golang策略模式的思考](https://juejin.cn/post/6844903527144243213)
