@@ -8,8 +8,8 @@ require (
 	github.com/alibaba/sentinel-golang v0.4.0
 	github.com/fatih/structs v1.1.0
 	github.com/fatih/structtag v1.2.0
-	github.com/gin-gonic/gin v1.5.0
-	github.com/go-playground/validator/v10 v10.3.0
+	github.com/gin-gonic/gin v1.7.0
+	github.com/go-playground/validator/v10 v10.4.1
 	github.com/golang/mock v1.3.1
 	github.com/google/go-querystring v1.1.0
 	github.com/gorilla/mux v1.7.4
