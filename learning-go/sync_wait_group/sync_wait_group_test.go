@@ -84,3 +84,18 @@ func f(i int, wg *sync.WaitGroup) {
 	fmt.Println(i)
 	wg.Done()
 }
+
+// waitGroup对象不是一个引用类型
+func TestGoroutineByWaitGroupRef(t *testing.T) {
+	wg := sync.WaitGroup{}
+	wg.Add(100)
+	for i := 0; i < 100; i++ {
+		go g(i, wg)
+	}
+	wg.Wait()
+}
+
+func g(i int, wg sync.WaitGroup) {
+	fmt.Println(i)
+	wg.Done()
+}

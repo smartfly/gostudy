@@ -1,6 +1,7 @@
 package structdemo
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"testing"
@@ -9,7 +10,7 @@ import (
 )
 
 type Server struct {
-	Name        string `json:"name,omitempty"`
+	Name        string `json:"name,omitempty" defaults:"test"`
 	ID          int
 	Enabled     bool
 	users       []string // not exported
@@ -26,4 +27,8 @@ func TestStruct2Map(t *testing.T) {
 	s := structs.New(server)
 	m := s.Map()
 	fmt.Println(m)
+
+	s1 := &Server{}
+	val, _ := json.Marshal(s1)
+	fmt.Println(string(val))
 }
