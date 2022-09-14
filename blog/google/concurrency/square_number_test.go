@@ -50,3 +50,12 @@ func TestAssign(t *testing.T) {
 	}
 	fmt.Println(a)
 }
+
+func TestRand(t *testing.T) {
+	a := rand.Intn(10)
+	fmt.Println(a)
+	rand.Seed(100)
+	b := rand.Intn(100)
+	fmt.Println(b)
+
+}
