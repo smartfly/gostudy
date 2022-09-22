@@ -1,0 +1,3198 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "title": "effect_store",
+  "description": "The api document of effect_store.proto",
+  "version": "2.0"
+ },
+ "consumes": [
+  "application/json"
+ ],
+ "produces": [
+  "application/json"
+ ],
+ "paths": {
+  "/trpc.middle_platform.effect_store.EffectStore/BatchUpdateMaterials": {
+   "post": {
+    "summary": "批量上下线素材",
+    "operationId": "BatchUpdateMaterials",
+    "responses": {
+     "200": {
+      "description": "BatchUpdateMaterialsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.BatchUpdateMaterialsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "material_id_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": "素材列表",
+      "items": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "更新素材状态 * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/CreateCategory": {
+   "post": {
+    "summary": "创建素材分类",
+    "operationId": "CreateCategory",
+    "responses": {
+     "200": {
+      "description": "CreateCategoryRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.CreateCategoryRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "category.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "category.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "category.id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "分类ID"
+     },
+     {
+      "name": "category.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "分类名称"
+     },
+     {
+      "name": "category.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "分类状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "category.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/CreateMaterial": {
+   "post": {
+    "summary": "创建素材",
+    "operationId": "CreateMaterial",
+    "responses": {
+     "200": {
+      "description": "CreateMaterialRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.CreateMaterialRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "material.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "material.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材描述"
+     },
+     {
+      "name": "material.designer_appid",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "创作者appid"
+     },
+     {
+      "name": "material.designer_uid",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创作者uid"
+     },
+     {
+      "name": "material.first_create",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "是否是设计师首次作品(0-否，1-是)"
+     },
+     {
+      "name": "material.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "material.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材名称"
+     },
+     {
+      "name": "material.resource_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材包信息\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Resource"
+      }
+     },
+     {
+      "name": "material.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "material.tags",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材标签\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+      }
+     },
+     {
+      "name": "material.task_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创建任务ID"
+     },
+     {
+      "name": "material.thumb_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材缩略图"
+     },
+     {
+      "name": "material.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.user.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.user.avatar",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "头像"
+     },
+     {
+      "name": "material.user.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.user.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "个人描述"
+     },
+     {
+      "name": "material.user.designer_type",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "设计师类型(1-内部设计师)"
+     },
+     {
+      "name": "material.user.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户ID"
+     },
+     {
+      "name": "material.user.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户名"
+     },
+     {
+      "name": "material.user.role",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "角色"
+     },
+     {
+      "name": "material.user.type",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "登录类型(wx/oa)"
+     },
+     {
+      "name": "material.user.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.video_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材展示视频"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/CreateTag": {
+   "post": {
+    "summary": "创建素材标签",
+    "operationId": "CreateTag",
+    "responses": {
+     "200": {
+      "description": "CreateTagRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.CreateTagRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "tag.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "tag.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "tag.id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "标签ID"
+     },
+     {
+      "name": "tag.materials",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 指定标签对应素材列表\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Material"
+      }
+     },
+     {
+      "name": "tag.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "标签名称"
+     },
+     {
+      "name": "tag.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "标签状态(1-隐藏、2-显示) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "tag.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/DownLoad": {
+   "post": {
+    "summary": "获取下载链接",
+    "operationId": "DownLoad",
+    "responses": {
+     "200": {
+      "description": "DownLoadRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.DownLoadRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "material_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     },
+     {
+      "name": "resource_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/GetOrderID": {
+   "post": {
+    "summary": "获取订单ID",
+    "operationId": "GetOrderID",
+    "responses": {
+     "200": {
+      "description": "GetOrderIDRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.GetOrderIDRsp"
+      }
+     }
+    },
+    "parameters": null,
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/GetUserAppIds": {
+   "post": {
+    "summary": "获取用户appid列表",
+    "operationId": "GetUserAppIds",
+    "responses": {
+     "200": {
+      "description": "GetUserAppIdsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.GetUserAppIdsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "loginType",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "ioa, wx"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListCategories": {
+   "post": {
+    "summary": "查询素材分类列表",
+    "operationId": "ListCategories",
+    "responses": {
+     "200": {
+      "description": "ListCategoriesRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListCategoriesRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListLogs": {
+   "post": {
+    "summary": "分页查询操作日志",
+    "operationId": "ListLogs",
+    "responses": {
+     "200": {
+      "description": "ListLogsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListLogsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid（必填）"
+     },
+     {
+      "name": "end_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "int64",
+      "description": "结束时间"
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页个数大小"
+     },
+     {
+      "name": "log_type",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "操作日志类别（必填） * 0 - LOGTYPE_NULL - 非法值，不做任何操作（用于处理上游函数异常导致的0值）\n * 1 - LOGTYPE_MATERIAL - 素材操作的日志\n * 2 - LOGTYPE_TAG - 标签操作的日志\n * 3 - LOGTYPE_AUDIT - 审核日志\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "object_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "对象ID，对于素材日志为素材ID，对于标签日志为标签ID"
+     },
+     {
+      "name": "rtx",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "操作人rtx"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页起始位置"
+     },
+     {
+      "name": "start_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "int64",
+      "description": "开始时间"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListMaterialAudit": {
+   "post": {
+    "summary": "查询素材审核",
+    "operationId": "ListMaterialAudit",
+    "responses": {
+     "200": {
+      "description": "ListMaterialAuditRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListMaterialAuditRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "auditor_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "审核人员ID"
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "material.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "material.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材描述"
+     },
+     {
+      "name": "material.designer_appid",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "创作者appid"
+     },
+     {
+      "name": "material.designer_uid",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创作者uid"
+     },
+     {
+      "name": "material.first_create",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "是否是设计师首次作品(0-否，1-是)"
+     },
+     {
+      "name": "material.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "material.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材名称"
+     },
+     {
+      "name": "material.resource_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材包信息\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Resource"
+      }
+     },
+     {
+      "name": "material.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "material.tags",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材标签\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+      }
+     },
+     {
+      "name": "material.task_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创建任务ID"
+     },
+     {
+      "name": "material.thumb_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材缩略图"
+     },
+     {
+      "name": "material.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.user.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.user.avatar",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "头像"
+     },
+     {
+      "name": "material.user.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.user.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "个人描述"
+     },
+     {
+      "name": "material.user.designer_type",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "设计师类型(1-内部设计师)"
+     },
+     {
+      "name": "material.user.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户ID"
+     },
+     {
+      "name": "material.user.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户名"
+     },
+     {
+      "name": "material.user.role",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "角色"
+     },
+     {
+      "name": "material.user.type",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "登录类型(wx/oa)"
+     },
+     {
+      "name": "material.user.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.video_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材展示视频"
+     },
+     {
+      "name": "material_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListMaterialTags": {
+   "post": {
+    "summary": "查询素材与标签关系",
+    "operationId": "ListMaterialTags",
+    "responses": {
+     "200": {
+      "description": "ListMaterialTagsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListMaterialTagsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "material_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材名称"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     },
+     {
+      "name": "state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材状态 * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "tag_id_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "format": "int32",
+      "description": "标签ID",
+      "items": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListMaterials": {
+   "post": {
+    "summary": "查询素材列表",
+    "operationId": "ListMaterials",
+    "responses": {
+     "200": {
+      "description": "ListMaterialsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListMaterialsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListOrder": {
+   "post": {
+    "summary": "订单列表查询",
+    "operationId": "ListOrder",
+    "responses": {
+     "200": {
+      "description": "ListOrderRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListOrderRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/ListTags": {
+   "post": {
+    "summary": "查询素材标签列表",
+    "operationId": "ListTags",
+    "responses": {
+     "200": {
+      "description": "ListTagsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.ListTagsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "标签名称"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     },
+     {
+      "name": "state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "标签状态 * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "tag_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "标签ID"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/OrderDetail": {
+   "post": {
+    "summary": "订单详情查询",
+    "operationId": "OrderDetail",
+    "responses": {
+     "200": {
+      "description": "OrderDetailRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.OrderDetailRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "order_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/PlaceOrder": {
+   "post": {
+    "summary": "下单",
+    "operationId": "PlaceOrder",
+    "responses": {
+     "200": {
+      "description": "PlaceOrderRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.PlaceOrderRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "material_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     },
+     {
+      "name": "order_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     },
+     {
+      "name": "resource_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/Refund": {
+   "post": {
+    "summary": "退款",
+    "operationId": "Refund",
+    "responses": {
+     "200": {
+      "description": "RefundRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.RefundRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "order_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/SearchMaterial": {
+   "post": {
+    "summary": "搜索素材",
+    "operationId": "SearchMaterial",
+    "responses": {
+     "200": {
+      "description": "SearchMaterialsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.SearchMaterialsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "category_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材分类id"
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "分页大小"
+     },
+     {
+      "name": "query",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "搜索参数"
+     },
+     {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "起始位置"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UpdateCategory": {
+   "post": {
+    "summary": "更新素材分类",
+    "operationId": "UpdateCategory",
+    "responses": {
+     "200": {
+      "description": "UpdateCategoryRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UpdateCategoryRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "category.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "category.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "category.id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "分类ID"
+     },
+     {
+      "name": "category.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "分类名称"
+     },
+     {
+      "name": "category.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "分类状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "category.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UpdateMaterial": {
+   "post": {
+    "summary": "更新素材",
+    "operationId": "UpdateMaterial",
+    "responses": {
+     "200": {
+      "description": "UpdateMaterialRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UpdateMaterialRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "material.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "material.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材描述"
+     },
+     {
+      "name": "material.designer_appid",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "创作者appid"
+     },
+     {
+      "name": "material.designer_uid",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创作者uid"
+     },
+     {
+      "name": "material.first_create",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "是否是设计师首次作品(0-否，1-是)"
+     },
+     {
+      "name": "material.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "material.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材名称"
+     },
+     {
+      "name": "material.resource_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材包信息\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Resource"
+      }
+     },
+     {
+      "name": "material.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "material.tags",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材标签\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+      }
+     },
+     {
+      "name": "material.task_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创建任务ID"
+     },
+     {
+      "name": "material.thumb_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材缩略图"
+     },
+     {
+      "name": "material.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.user.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.user.avatar",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "头像"
+     },
+     {
+      "name": "material.user.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.user.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "个人描述"
+     },
+     {
+      "name": "material.user.designer_type",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "设计师类型(1-内部设计师)"
+     },
+     {
+      "name": "material.user.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户ID"
+     },
+     {
+      "name": "material.user.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户名"
+     },
+     {
+      "name": "material.user.role",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "角色"
+     },
+     {
+      "name": "material.user.type",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "登录类型(wx/oa)"
+     },
+     {
+      "name": "material.user.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.video_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材展示视频"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UpdateMaterialAudit": {
+   "post": {
+    "summary": "更新素材审核",
+    "operationId": "UpdateMaterialAudit",
+    "responses": {
+     "200": {
+      "description": "UpdateMaterialAuditRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UpdateMaterialAuditRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "auditor_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "审核人员ID"
+     },
+     {
+      "name": "material.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "material.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材描述"
+     },
+     {
+      "name": "material.designer_appid",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "创作者appid"
+     },
+     {
+      "name": "material.designer_uid",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创作者uid"
+     },
+     {
+      "name": "material.first_create",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "是否是设计师首次作品(0-否，1-是)"
+     },
+     {
+      "name": "material.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "material.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材名称"
+     },
+     {
+      "name": "material.resource_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材包信息\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Resource"
+      }
+     },
+     {
+      "name": "material.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "material.tags",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材标签\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+      }
+     },
+     {
+      "name": "material.task_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创建任务ID"
+     },
+     {
+      "name": "material.thumb_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材缩略图"
+     },
+     {
+      "name": "material.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.user.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.user.avatar",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "头像"
+     },
+     {
+      "name": "material.user.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.user.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "个人描述"
+     },
+     {
+      "name": "material.user.designer_type",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "设计师类型(1-内部设计师)"
+     },
+     {
+      "name": "material.user.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户ID"
+     },
+     {
+      "name": "material.user.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户名"
+     },
+     {
+      "name": "material.user.role",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "角色"
+     },
+     {
+      "name": "material.user.type",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "登录类型(wx/oa)"
+     },
+     {
+      "name": "material.user.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.video_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材展示视频"
+     },
+     {
+      "name": "suggestion",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "审核意见"
+     },
+     {
+      "name": "urls",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": "审核图片链接数组",
+      "items": {
+       "type": "string"
+      }
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UpdateMaterialTags": {
+   "post": {
+    "summary": "更新素材与标签关系",
+    "operationId": "UpdateMaterialTags",
+    "responses": {
+     "200": {
+      "description": "UpdateMaterialTagsRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UpdateMaterialTagsRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "material.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.audit_state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ]
+     },
+     {
+      "name": "material.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材描述"
+     },
+     {
+      "name": "material.designer_appid",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "创作者appid"
+     },
+     {
+      "name": "material.designer_uid",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创作者uid"
+     },
+     {
+      "name": "material.first_create",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "是否是设计师首次作品(0-否，1-是)"
+     },
+     {
+      "name": "material.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材ID"
+     },
+     {
+      "name": "material.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材名称"
+     },
+     {
+      "name": "material.resource_list",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材包信息\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Resource"
+      }
+     },
+     {
+      "name": "material.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "material.tags",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 素材标签\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+      }
+     },
+     {
+      "name": "material.task_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "创建任务ID"
+     },
+     {
+      "name": "material.thumb_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材缩略图"
+     },
+     {
+      "name": "material.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.user.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "material.user.avatar",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "头像"
+     },
+     {
+      "name": "material.user.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "material.user.desc",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "个人描述"
+     },
+     {
+      "name": "material.user.designer_type",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "设计师类型(1-内部设计师)"
+     },
+     {
+      "name": "material.user.id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户ID"
+     },
+     {
+      "name": "material.user.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "用户名"
+     },
+     {
+      "name": "material.user.role",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "角色"
+     },
+     {
+      "name": "material.user.type",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "登录类型(wx/oa)"
+     },
+     {
+      "name": "material.user.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     },
+     {
+      "name": "material.video_url",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "素材展示视频"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UpdateTag": {
+   "post": {
+    "summary": "更新素材标签",
+    "operationId": "UpdateTag",
+    "responses": {
+     "200": {
+      "description": "UpdateTagRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UpdateTagRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "tag.app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "多租户appid"
+     },
+     {
+      "name": "tag.create_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "创建时间"
+     },
+     {
+      "name": "tag.id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "标签ID"
+     },
+     {
+      "name": "tag.materials",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "description": " 指定标签对应素材列表\n",
+      "items": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.Material"
+      }
+     },
+     {
+      "name": "tag.name",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "标签名称"
+     },
+     {
+      "name": "tag.state",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "标签状态(1-隐藏、2-显示) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+      "enum": [
+       0,
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "name": "tag.update_time",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "format": "uint64",
+      "description": "更新时间"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UploadCancel": {
+   "post": {
+    "summary": "取消上传请求",
+    "operationId": "UploadCancel",
+    "responses": {
+     "200": {
+      "description": "UploadCancelRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UploadCancelRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "上传中台申请的APPID"
+     },
+     {
+      "name": "req_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "文件上传的请求ID"
+     },
+     {
+      "name": "service_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     },
+     {
+      "name": "task_id",
+      "in": "query",
+      "required": false,
+      "type": "string"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  },
+  "/trpc.middle_platform.effect_store.EffectStore/UploadFailNotify": {
+   "post": {
+    "summary": "上传失败通知",
+    "operationId": "UploadFailNotify",
+    "responses": {
+     "200": {
+      "description": "UploadFailNotifyRsp",
+      "schema": {
+       "$ref": "#/definitions/trpc.middle_platform.effect_store.UploadFailNotifyRsp"
+      }
+     }
+    },
+    "parameters": [
+     {
+      "name": "app_id",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "uint32",
+      "description": "上传中台申请的APPID"
+     },
+     {
+      "name": "msg",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "文件上传失败的原因"
+     },
+     {
+      "name": "req_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "文件上传的请求ID"
+     },
+     {
+      "name": "result",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "description": "上传结果"
+     },
+     {
+      "name": "service_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "上传中台申请的ServiceID"
+     },
+     {
+      "name": "task_id",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "description": "对应的任务ID"
+     }
+    ],
+    "tags": [
+     "effectstore.trpc"
+    ]
+   }
+  }
+ },
+ "definitions": {
+  "trpc.middle_platform.effect_store.BatchUpdateMaterialsRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.BatchUpdateMaterialsRsp",
+   "description": "BatchUpdateMaterialsRsp"
+  },
+  "trpc.middle_platform.effect_store.Category": {
+   "type": "object",
+   "properties": {
+    "app_id": {
+     "title": "app_id",
+     "type": "integer",
+     "format": "int32",
+     "description": "多租户appid"
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "创建时间"
+    },
+    "id": {
+     "title": "id",
+     "type": "integer",
+     "format": "int32",
+     "description": "分类ID"
+    },
+    "name": {
+     "title": "name",
+     "type": "string",
+     "description": "分类名称"
+    },
+    "state": {
+     "title": "state",
+     "type": "integer",
+     "format": "int32",
+     "description": "分类状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "更新时间"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.Category",
+   "description": "素材分类基本信息"
+  },
+  "trpc.middle_platform.effect_store.CreateCategoryRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.CreateCategoryRsp",
+   "description": "CreateCategoryRsp"
+  },
+  "trpc.middle_platform.effect_store.CreateMaterialRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.CreateMaterialRsp",
+   "description": "CreateMaterialRsp"
+  },
+  "trpc.middle_platform.effect_store.CreateTagRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.CreateTagRsp",
+   "description": "CreateTagRsp"
+  },
+  "trpc.middle_platform.effect_store.DownLoadRsp": {
+   "type": "object",
+   "properties": {
+    "download_url": {
+     "title": "download_url",
+     "type": "string"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.DownLoadRsp",
+   "description": "DownLoadRsp"
+  },
+  "trpc.middle_platform.effect_store.GetOrderIDRsp": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "title": "order_id",
+     "type": "string"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.GetOrderIDRsp",
+   "description": "GetOrderIDRsp"
+  },
+  "trpc.middle_platform.effect_store.GetUserAppIdsRsp": {
+   "type": "object",
+   "properties": {
+    "appIds": {
+     "title": "appIds",
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "retCode": {
+     "title": "retCode",
+     "type": "integer",
+     "format": "int32"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.GetUserAppIdsRsp",
+   "description": "GetUserAppIdsRsp"
+  },
+  "trpc.middle_platform.effect_store.ListCategoriesRsp": {
+   "type": "object",
+   "properties": {
+    "categories": {
+     "title": "categories",
+     "type": "array",
+     "description": " 素材分类列表\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Category"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "integer",
+     "format": "uint32",
+     "description": "素材分类总数"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListCategoriesRsp",
+   "description": "ListCategoriesRsp"
+  },
+  "trpc.middle_platform.effect_store.ListLogsRsp": {
+   "type": "object",
+   "properties": {
+    "logs": {
+     "title": "logs",
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Log"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "string",
+     "format": "uint64"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListLogsRsp",
+   "description": "ListLogsRsp"
+  },
+  "trpc.middle_platform.effect_store.ListMaterialAuditRsp": {
+   "type": "object",
+   "properties": {
+    "materialAudits": {
+     "title": "materialAudits",
+     "type": "array",
+     "description": " 素材审核信息\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.MaterialAudit"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "integer",
+     "format": "uint32",
+     "description": "总数"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListMaterialAuditRsp",
+   "description": "ListMaterialAuditRsp"
+  },
+  "trpc.middle_platform.effect_store.ListMaterialTagsRsp": {
+   "type": "object",
+   "properties": {
+    "materialTags": {
+     "title": "materialTags",
+     "type": "array",
+     "description": " 素材标签信息\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Material"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "integer",
+     "format": "uint32",
+     "description": "总数"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListMaterialTagsRsp",
+   "description": "ListMaterialTagsRsp"
+  },
+  "trpc.middle_platform.effect_store.ListMaterialsRsp": {
+   "type": "object",
+   "properties": {
+    "materials": {
+     "title": "materials",
+     "type": "array",
+     "description": " 素材列表\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Material"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "integer",
+     "format": "uint32",
+     "description": "素材总数"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListMaterialsRsp",
+   "description": "ListMaterialsRsp"
+  },
+  "trpc.middle_platform.effect_store.ListOrderRsp": {
+   "type": "object",
+   "properties": {
+    "order": {
+     "title": "order",
+     "type": "array",
+     "description": " order长度小于请求的limit值表示到达尾部\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Order"
+     }
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListOrderRsp",
+   "description": "ListOrderRsp"
+  },
+  "trpc.middle_platform.effect_store.ListTagsRsp": {
+   "type": "object",
+   "properties": {
+    "tags": {
+     "title": "tags",
+     "type": "array",
+     "description": " 素材标签列表\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "integer",
+     "format": "uint32",
+     "description": "素材标签总数量"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.ListTagsRsp",
+   "description": "ListTagsRsp"
+  },
+  "trpc.middle_platform.effect_store.Log": {
+   "type": "object",
+   "properties": {
+    "app_id": {
+     "title": "app_id",
+     "type": "integer",
+     "format": "int32",
+     "description": "多租户appid"
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "int64",
+     "description": "创建时间"
+    },
+    "err_message": {
+     "title": "err_message",
+     "type": "string",
+     "description": "请求err信息"
+    },
+    "log_op_method": {
+     "title": "log_op_method",
+     "type": "integer",
+     "format": "int32",
+     "description": "操作方法类别 * 0 - LOGOPMETHOD_NULL - 非法值，不做任何操作（用于处理上游函数异常导致的0值）\n * 1 - LOGOPMETHOD_CREATE - 新增\n * 2 - LOGOPMETHOD_UPDATE - 更新\n * 3 - LOGOPMETHOD_DELETE - 删除\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "log_type": {
+     "title": "log_type",
+     "type": "integer",
+     "format": "int32",
+     "description": "日志类别 * 0 - LOGTYPE_NULL - 非法值，不做任何操作（用于处理上游函数异常导致的0值）\n * 1 - LOGTYPE_MATERIAL - 素材操作的日志\n * 2 - LOGTYPE_TAG - 标签操作的日志\n * 3 - LOGTYPE_AUDIT - 审核日志\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "object_id": {
+     "title": "object_id",
+     "type": "string",
+     "description": "对象ID，对于素材日志为素材ID，对于标签日志为标签ID"
+    },
+    "op_cmd": {
+     "title": "op_cmd",
+     "type": "string",
+     "description": "操作命令字"
+    },
+    "op_message": {
+     "title": "op_message",
+     "type": "string",
+     "description": "日志信息（请求体信息）"
+    },
+    "rsp_message": {
+     "title": "rsp_message",
+     "type": "string",
+     "description": "请求回包信息"
+    },
+    "rtx": {
+     "title": "rtx",
+     "type": "string",
+     "description": "操作人rtx"
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "int64",
+     "description": "操作时间"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.Log",
+   "description": "操作日志基本信息"
+  },
+  "trpc.middle_platform.effect_store.Material": {
+   "type": "object",
+   "properties": {
+    "app_id": {
+     "title": "app_id",
+     "type": "integer",
+     "format": "int32",
+     "description": "多租户appid"
+    },
+    "audit_state": {
+     "title": "audit_state",
+     "type": "integer",
+     "format": "int32",
+     "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "创建时间"
+    },
+    "desc": {
+     "title": "desc",
+     "type": "string",
+     "description": "素材描述"
+    },
+    "designer_appid": {
+     "title": "designer_appid",
+     "type": "integer",
+     "format": "int32",
+     "description": "创作者appid"
+    },
+    "designer_uid": {
+     "title": "designer_uid",
+     "type": "string",
+     "description": "创作者uid"
+    },
+    "first_create": {
+     "title": "first_create",
+     "type": "integer",
+     "format": "int32",
+     "description": "是否是设计师首次作品(0-否，1-是)"
+    },
+    "id": {
+     "title": "id",
+     "type": "string",
+     "description": "素材ID"
+    },
+    "name": {
+     "title": "name",
+     "type": "string",
+     "description": "素材名称"
+    },
+    "resource_list": {
+     "title": "resource_list",
+     "type": "array",
+     "description": " 素材包信息\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Resource"
+     }
+    },
+    "state": {
+     "title": "state",
+     "type": "integer",
+     "format": "int32",
+     "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "tags": {
+     "title": "tags",
+     "type": "array",
+     "description": " 素材标签\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Tag"
+     }
+    },
+    "task_id": {
+     "title": "task_id",
+     "type": "string",
+     "description": "创建任务ID"
+    },
+    "thumb_url": {
+     "title": "thumb_url",
+     "type": "string",
+     "description": "素材缩略图"
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "更新时间"
+    },
+    "user": {
+     "title": "user",
+     "$ref": "#/definitions/trpc.middle_platform.effect_store.User",
+     "description": " 创作者信息\n"
+    },
+    "video_url": {
+     "title": "video_url",
+     "type": "string",
+     "description": "素材展示视频"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.Material",
+   "description": "素材基本信息"
+  },
+  "trpc.middle_platform.effect_store.MaterialAudit": {
+   "type": "object",
+   "properties": {
+    "app_id": {
+     "title": "app_id",
+     "type": "integer",
+     "format": "int32",
+     "description": "多租户appid"
+    },
+    "audit_state": {
+     "title": "audit_state",
+     "type": "integer",
+     "format": "int32",
+     "description": "审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    "audit_type": {
+     "title": "audit_type",
+     "type": "integer",
+     "format": "int32",
+     "description": "审核类型 * 0 - AUDITDTYPEEFAULT - 占位符\n * 1 - MATERIALAUDIT - 素材审核\n * 2 - DESIGNERAUDIT - 设计师审核\n",
+     "enum": [
+      0,
+      1,
+      2
+     ]
+    },
+    "auditor_id": {
+     "title": "auditor_id",
+     "type": "string",
+     "description": "审核ID"
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "int64",
+     "description": "创建时间"
+    },
+    "designer_uid": {
+     "title": "designer_uid",
+     "type": "string",
+     "description": "设计师UID"
+    },
+    "material_id": {
+     "title": "material_id",
+     "type": "string",
+     "description": "素材ID"
+    },
+    "suggestion": {
+     "title": "suggestion",
+     "type": "string",
+     "description": "修改建议"
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "int64",
+     "description": "操作时间"
+    },
+    "urls": {
+     "title": "urls",
+     "type": "array",
+     "description": "图片",
+     "items": {
+      "type": "string"
+     }
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.MaterialAudit",
+   "description": "MaterialAudit"
+  },
+  "trpc.middle_platform.effect_store.Order": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "title": "name",
+     "type": "string"
+    },
+    "order_id": {
+     "title": "order_id",
+     "type": "string"
+    },
+    "price": {
+     "title": "price",
+     "type": "integer",
+     "format": "uint32"
+    },
+    "resource_type": {
+     "title": "resource_type",
+     "type": "string"
+    },
+    "state": {
+     "title": "state",
+     "type": "integer",
+     "format": "uint32"
+    },
+    "time": {
+     "title": "time",
+     "type": "string",
+     "format": "uint64",
+     "description": "下单时间，秒级时间戳"
+    },
+    "user_id": {
+     "title": "user_id",
+     "type": "string"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.Order",
+   "description": "Order"
+  },
+  "trpc.middle_platform.effect_store.OrderDetailRsp": {
+   "type": "object",
+   "properties": {
+    "order": {
+     "title": "order",
+     "$ref": "#/definitions/trpc.middle_platform.effect_store.Order"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.OrderDetailRsp",
+   "description": "OrderDetailRsp"
+  },
+  "trpc.middle_platform.effect_store.PlaceOrderRsp": {
+   "type": "object",
+   "properties": {
+    "code_url": {
+     "title": "code_url",
+     "type": "string"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.PlaceOrderRsp",
+   "description": "PlaceOrderRsp"
+  },
+  "trpc.middle_platform.effect_store.RefundRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.RefundRsp",
+   "description": "RefundRsp"
+  },
+  "trpc.middle_platform.effect_store.Resource": {
+   "type": "object",
+   "properties": {
+    "audit_state": {
+     "title": "audit_state",
+     "type": "integer",
+     "format": "int32",
+     "description": "素材审核状态 * 0 - AUDITDEFAULT - 占位符\n * 1 - UNAUDIT - 未审核\n * 2 - AUDITING - 审核中\n * 3 - PASS - 审核通过\n * 4 - REJECT - 审核拒绝\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "创建时间"
+    },
+    "file_size": {
+     "title": "file_size",
+     "type": "integer",
+     "format": "int32",
+     "description": "文件大小"
+    },
+    "frame_rate": {
+     "title": "frame_rate",
+     "type": "integer",
+     "format": "int32",
+     "description": "帧率"
+    },
+    "id": {
+     "title": "id",
+     "type": "string"
+    },
+    "material_id": {
+     "title": "material_id",
+     "type": "string"
+    },
+    "price": {
+     "title": "price",
+     "type": "string",
+     "format": "uint64",
+     "description": "价格(单位为分)"
+    },
+    "resolution": {
+     "title": "resolution",
+     "type": "string",
+     "description": "分辨率"
+    },
+    "state": {
+     "title": "state",
+     "type": "integer",
+     "format": "int32",
+     "description": "素材状态(1-下线、2-上线) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "task_id": {
+     "title": "task_id",
+     "type": "string",
+     "description": "创建任务ID"
+    },
+    "type": {
+     "title": "type",
+     "type": "integer",
+     "format": "int32",
+     "description": " * 0 - RESOURCEDEFAULT - 占位符\n * 1 - MATERIAL - 源文件\n * 2 - PAG - pag文件\n * 3 - LOTTIE - lottie文件\n * 4 - APNG - APNG文件\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    "unique_key": {
+     "title": "unique_key",
+     "type": "string",
+     "description": "素材唯一标示，防重"
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "更新时间"
+    },
+    "url": {
+     "title": "url",
+     "type": "string",
+     "description": "素材包信息"
+    },
+    "version": {
+     "title": "version",
+     "type": "string"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.Resource",
+   "description": "Resource"
+  },
+  "trpc.middle_platform.effect_store.SearchMaterialsRsp": {
+   "type": "object",
+   "properties": {
+    "materials": {
+     "title": "materials",
+     "type": "array",
+     "description": " 素材列表\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Material"
+     }
+    },
+    "total_count": {
+     "title": "total_count",
+     "type": "integer",
+     "format": "uint32",
+     "description": "素材总数"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.SearchMaterialsRsp",
+   "description": "SearchMaterialsRsp"
+  },
+  "trpc.middle_platform.effect_store.Tag": {
+   "type": "object",
+   "properties": {
+    "app_id": {
+     "title": "app_id",
+     "type": "integer",
+     "format": "int32",
+     "description": "多租户appid"
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "创建时间"
+    },
+    "id": {
+     "title": "id",
+     "type": "integer",
+     "format": "int32",
+     "description": "标签ID"
+    },
+    "materials": {
+     "title": "materials",
+     "type": "array",
+     "description": " 指定标签对应素材列表\n",
+     "items": {
+      "$ref": "#/definitions/trpc.middle_platform.effect_store.Material"
+     }
+    },
+    "name": {
+     "title": "name",
+     "type": "string",
+     "description": "标签名称"
+    },
+    "state": {
+     "title": "state",
+     "type": "integer",
+     "format": "int32",
+     "description": "标签状态(1-隐藏、2-显示) * 0 - STATEDEFAULT - 占位符\n * 1 - OFFLINE - 下线\n * 2 - ONLINE - 上线\n * 3 - DELETE - 删除\n",
+     "enum": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "更新时间"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.Tag",
+   "description": "素材标签基本信息"
+  },
+  "trpc.middle_platform.effect_store.UpdateCategoryRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.UpdateCategoryRsp",
+   "description": "UpdateCategoryRsp"
+  },
+  "trpc.middle_platform.effect_store.UpdateMaterialAuditRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.UpdateMaterialAuditRsp",
+   "description": "UpdateMaterialAuditRsp"
+  },
+  "trpc.middle_platform.effect_store.UpdateMaterialRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.UpdateMaterialRsp",
+   "description": "UpdateMaterialRsp"
+  },
+  "trpc.middle_platform.effect_store.UpdateMaterialTagsRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.UpdateMaterialTagsRsp",
+   "description": "UpdateMaterialTagsRsp"
+  },
+  "trpc.middle_platform.effect_store.UpdateTagRsp": {
+   "type": "object",
+   "title": "trpc.middle_platform.effect_store.UpdateTagRsp",
+   "description": "UpdateTagRsp"
+  },
+  "trpc.middle_platform.effect_store.UploadCancelRsp": {
+   "type": "object",
+   "properties": {
+    "left_quota": {
+     "title": "left_quota",
+     "type": "string",
+     "format": "int64",
+     "description": "剩余额度"
+    },
+    "ret_code": {
+     "title": "ret_code",
+     "type": "integer",
+     "format": "int32",
+     "description": "返回业务处理结果"
+    },
+    "total_quota": {
+     "title": "total_quota",
+     "type": "string",
+     "format": "int64",
+     "description": "总额度"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.UploadCancelRsp",
+   "description": "UploadCancelRsp"
+  },
+  "trpc.middle_platform.effect_store.UploadFailNotifyRsp": {
+   "type": "object",
+   "properties": {
+    "left_quota": {
+     "title": "left_quota",
+     "type": "string",
+     "format": "int64",
+     "description": "剩余额度"
+    },
+    "ret_code": {
+     "title": "ret_code",
+     "type": "integer",
+     "format": "int32",
+     "description": "返回业务处理结果"
+    },
+    "total_quota": {
+     "title": "total_quota",
+     "type": "string",
+     "format": "int64",
+     "description": "总额度"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.UploadFailNotifyRsp",
+   "description": "UploadFailNotifyRsp"
+  },
+  "trpc.middle_platform.effect_store.User": {
+   "type": "object",
+   "properties": {
+    "app_id": {
+     "title": "app_id",
+     "type": "integer",
+     "format": "int32",
+     "description": "多租户appid"
+    },
+    "avatar": {
+     "title": "avatar",
+     "type": "string",
+     "description": "头像"
+    },
+    "create_time": {
+     "title": "create_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "创建时间"
+    },
+    "desc": {
+     "title": "desc",
+     "type": "string",
+     "description": "个人描述"
+    },
+    "designer_type": {
+     "title": "designer_type",
+     "type": "integer",
+     "format": "int32",
+     "description": "设计师类型(1-内部设计师)"
+    },
+    "id": {
+     "title": "id",
+     "type": "string",
+     "description": "用户ID"
+    },
+    "name": {
+     "title": "name",
+     "type": "string",
+     "description": "用户名"
+    },
+    "role": {
+     "title": "role",
+     "type": "string",
+     "description": "角色"
+    },
+    "type": {
+     "title": "type",
+     "type": "string",
+     "description": "登录类型(wx/oa)"
+    },
+    "update_time": {
+     "title": "update_time",
+     "type": "string",
+     "format": "uint64",
+     "description": "更新时间"
+    }
+   },
+   "title": "trpc.middle_platform.effect_store.User",
+   "description": "User"
+  }
+ }
+}

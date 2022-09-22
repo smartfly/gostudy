@@ -6,6 +6,10 @@
 - methods and interfaces: 方法和接口
 - Go's concurrency primitives: Go语言并发基础
 
+## [Go语言四十二章经](https://github.com/ffhelicopter/Go42)
+
+
+
 ## 开源框架 [gin-gonic/gin](https://github.com/gin-gonic/gin)
 
 Use a Vendor tool like Govendor

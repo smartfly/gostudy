@@ -48,7 +48,7 @@ func watch(ctx context.Context, name string, num int) {
 			fmt.Printf("%v %s  监控退出, 停止了...\n", time.Now(), name)
 			return
 		default:
-			//fmt.Printf("%s goroutine监控中... \n", name)
+			fmt.Printf("%s goroutine监控中... \n", name)
 			fmt.Println(time.Now(), name, ctx)
 			fmt.Printf("%p\n", &ctx)
 			a := time.Duration(num)

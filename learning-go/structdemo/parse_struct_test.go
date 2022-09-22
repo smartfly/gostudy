@@ -30,7 +30,7 @@ func TestParseStruct(t *testing.T) {
 		if err != nil {
 			panic(err)
 		}
-		//for _, t := range tags.Tags() {
+		//iterator _, t := range tags.Tags() {
 		//	fmt.Printf("tag: %+v\n", t.Value())
 		//}
 		jsonTag, err := tags.Get("protobuf")
